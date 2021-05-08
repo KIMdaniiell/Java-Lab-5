@@ -1,0 +1,4 @@
+#!/bin/bash
+DPATH=data/data.xml
+export DPATH
+bash
