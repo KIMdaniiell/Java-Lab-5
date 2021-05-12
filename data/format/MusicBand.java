@@ -3,6 +3,8 @@ import exceptions.InvalidInputValueException;
 import exceptions.InvalidXMLInputStructureException;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Stack;
 
@@ -22,6 +24,11 @@ public class MusicBand implements Comparable<MusicBand> {
 
     public void setId(Stack<MusicBand> mystack) {
         int idvalue = 1;
+        mystack.sort(new Comparator<MusicBand> (){
+            public int compare(MusicBand band1, MusicBand band2) {
+                return band1.getId().compareTo(band2.getId());
+            }
+        } );
         for (MusicBand band: mystack){
             if (band.getId().intValue()>=idvalue){
                 idvalue = band.getId().intValue() + 1;
@@ -84,12 +91,8 @@ public class MusicBand implements Comparable<MusicBand> {
         this.frontMan = frontMan;
     }
 
-    public void setFrontMan(String s) throws InvalidInputValueException{
-        if (s.equals("")) {
-            this.frontMan = null;
-        } else {
-            throw new InvalidInputValueException("Недопустимое значение FrontMan.");
-        }
+    public void setFrontMan(String s) {
+        this.frontMan = null;
     }
 
     public String getName() {
