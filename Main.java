@@ -16,17 +16,16 @@ public class Main {
         String data_path = System.getenv("DPATH");
         if (data_path==null){
             System.out.println("Переменная окружения не найдена");
+            System.exit(1);
         } else {
-            String outdata_path = data_path;
-            Stack<MusicBand> mycollection = Parser.serialize(data_path);
+            Stack<MusicBand> collection = Parser.serialize(data_path);
 
             /**
              * Code need for receiving commands from terminal
              */
-            Commander commander = new Commander();
             Scanner sc = new Scanner(System.in);
             while (true) {                                              //while not receiving "exit" command
-                commander.doCommand(mycollection, outdata_path, sc);
+                Commander.doCommand(collection, data_path, sc);
             }
         }
 
