@@ -14,11 +14,11 @@ import java.util.Stack;
 public class AddCommand extends ReadsBand implements CanEdit{
 
     public Stack<MusicBand> execute(Stack<MusicBand> mystack, String[] argument) {
-        if (argument.length>1){
+        if (argument.length>0){
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
         MusicBand myband = addition(mystack);
-        Collections.sort(mystack);
+        /*Collections.sort(mystack);
         Integer id = 1;
         for (MusicBand band : mystack){
             Integer bandid = Integer.valueOf(band.getId().toString());
@@ -26,7 +26,7 @@ public class AddCommand extends ReadsBand implements CanEdit{
                 id+=1;
             }
         }
-        myband.saveID(id);
+        myband.saveID(id);*/
         mystack.push(myband);
         return mystack;
     }

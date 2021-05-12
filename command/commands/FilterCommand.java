@@ -14,7 +14,7 @@ public class FilterCommand implements NonArgumentable {
 
     @Override
     public void execute(Stack<MusicBand> mystack, String[] argument) {
-        if (argument.length>1){
+        if (argument.length>0){
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
         System.out.println("Введите одну из констант MusicGenre:");

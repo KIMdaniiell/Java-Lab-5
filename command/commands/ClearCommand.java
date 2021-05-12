@@ -12,7 +12,7 @@ import java.util.Stack;
 public class ClearCommand implements CanEdit {  //очистить коллекцию
     @Override
     public Stack<MusicBand> execute(Stack<MusicBand> mystack, String[] argument) {
-        if (argument.length>1){
+        if (argument.length>0){
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
         mystack.clear();

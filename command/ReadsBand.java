@@ -36,13 +36,16 @@ public class ReadsBand {
         band.setId(mystack);
     }
     private void Namesetter (Scanner sc, MusicBand band){
-        try {
-            System.out.print("\nВведите поле Name :\t");
-            String st = sc.nextLine();
-            band.setName(st);
-        }catch (InvalidInputValueException e){
-            System.out.println(e.getMessage());
-            Namesetter(sc,band);
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try {
+                System.out.print("\nВведите поле Name :\t");
+                String st = sc.nextLine();
+                band.setName(st);
+                input_is_correct = true;
+            }catch (InvalidInputValueException e){
+                System.out.println(e.getMessage());
+            }
         }
     }
 
@@ -53,77 +56,98 @@ public class ReadsBand {
         band.setCoordinates(coord);
     }
     private void Xsetter (Scanner sc, Coordinates c){
-        try {
-            System.out.print("\nВведите поле Coordinates.X :\t");
-            String st = sc.nextLine();
-            c.setX(st);
-        }catch (NumberFormatException e){
-            System.out.println("Недопустимое значение Coordinates.X . Невозможно привести к типу long.");
-            Xsetter(sc,c);
+        boolean input_is_correct = false;
+        while (!input_is_correct) {
+            try {
+                System.out.print("\nВведите поле Coordinates.X :\t");
+                String st = sc.nextLine();
+                c.setX(st);
+                input_is_correct = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Недопустимое значение Coordinates.X . Невозможно привести к типу long.");
+            }
         }
     }
     private void Ysetter (Scanner sc, Coordinates c){
-        try {
-            System.out.print("\nВведите поле Coordinates.Y :\t");
-            String st = sc.nextLine();
-            c.setY(st);
-        }catch (InvalidInputValueException e){
-            System.out.println(e.getMessage());
-            Xsetter(sc,c);
-        }catch (NumberFormatException e){
-            System.out.println("Недопустимое значение Coordinates.Y . Невозможно привести к типу Double.");
-            Xsetter(sc,c);
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try {
+                System.out.print("\nВведите поле Coordinates.Y :\t");
+                String st = sc.nextLine();
+                c.setY(st);
+                input_is_correct = true;
+            }catch (InvalidInputValueException e){
+                System.out.println(e.getMessage());
+            }catch (NumberFormatException e){
+                System.out.println("Недопустимое значение Coordinates.Y . Невозможно привести к типу Double.");
+            }
         }
+
     }
 
     private void NumberOfParticipantssetter (Scanner sc, MusicBand band){
-        try {
-            System.out.print("\nВведите поле numberOfParticipants :\t");
-            String st = sc.nextLine();
-            band.setNumberOfParticipants(st);
-        } catch (InvalidInputValueException e){
-            System.out.println(e.getMessage());
-            NumberOfParticipantssetter(sc,band);
-        } catch (NumberFormatException e){
-            System.out.println("Недопустимое значение NumberOfParticipants. Невозможно привести к типу Integer.");
-            NumberOfParticipantssetter(sc,band);
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try {
+                System.out.print("\nВведите поле numberOfParticipants :\t");
+                String st = sc.nextLine();
+                band.setNumberOfParticipants(st);
+                input_is_correct = true;
+            } catch (InvalidInputValueException e){
+                System.out.println(e.getMessage());
+            } catch (NumberFormatException e){
+                System.out.println("Недопустимое значение NumberOfParticipants. Невозможно привести к типу Integer.");
+            }
         }
+
     }
     private void Descriptionsetter (Scanner sc, MusicBand band){
-        try {
-            System.out.print("\nВведите поле description :\t");
-            String st = sc.nextLine();
-            band.setDescription(st);
-        }catch (InvalidInputValueException e){
-            System.out.println(e.getMessage());
-            Descriptionsetter(sc,band);
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try {
+                System.out.print("\nВведите поле description :\t");
+                String st = sc.nextLine();
+                band.setDescription(st);
+                input_is_correct = true;
+            }catch (InvalidInputValueException e){
+                System.out.println(e.getMessage());
+            }
         }
+
     }
 
     private void EstablishmentDatesetter (Scanner sc, MusicBand band){
-        try {
-            System.out.print("\nВведите поле establishmentDate :\t");
-            String st = sc.nextLine();
-            band.setEstablishmentDate(st);
-        }catch (NumberFormatException e){
-            System.out.println("Недопустимое значение EstablishmentDate. Невозможно привести к типу java.util.Date .");
-            EstablishmentDatesetter(sc,band);
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try {
+                System.out.print("\nВведите поле establishmentDate :\t");
+                String st = sc.nextLine();
+                band.setEstablishmentDate(st);
+                input_is_correct = true;
+            }catch (NumberFormatException e){
+                System.out.println("Недопустимое значение EstablishmentDate. Невозможно привести к типу java.util.Date .");
+            }
         }
+
     }
     private void Genresetter (Scanner sc, MusicBand band){
-        try {
-            System.out.println("\nВведите поле Genre :\t");
-            System.out.print("{\t");
-            for (MusicGenre genre: MusicGenre.values()){
-                System.out.print(genre+"\t");
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try {
+                System.out.println("\nВведите поле Genre :\t");
+                System.out.print("{\t");
+                for (MusicGenre genre: MusicGenre.values()){
+                    System.out.print(genre+"\t");
+                }
+                System.out.print("} : \t");
+                String st = sc.nextLine();
+                band.setGenre(st);
+                input_is_correct = true;
+            }catch (InvalidInputValueException e){
+                System.out.println(e.getMessage());
             }
-            System.out.print("} : \t");
-            String st = sc.nextLine();
-            band.setGenre(st);
-        }catch (InvalidInputValueException e){
-            System.out.println(e.getMessage());
-            Genresetter(sc,band);
         }
+
     }
 
     private void Personsetter (Scanner sc,MusicBand band){
@@ -136,45 +160,53 @@ public class ReadsBand {
             FLocSetter(sc,p);
             band.setFrontMan(p);
         }else{
-            try {
-                band.setFrontMan("");
-            } catch (InvalidInputValueException e){
-                System.out.println("Недопустимое значение Person.");
-            }
+            band.setFrontMan("");
         }
     }
     private void FNamesetter (Scanner sc, Person p){
-        try {
-            System.out.print("\nВведите поле Frontman.Name :\t");
-            String st = sc.nextLine();
-            p.setName(st);
-        }catch (InvalidInputValueException e){
-            System.out.println(e.getMessage());
-            FNamesetter(sc,p);
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try {
+                System.out.print("\nВведите поле Frontman.Name :\t");
+                String st = sc.nextLine();
+                p.setName(st);
+                input_is_correct = true;
+            }catch (InvalidInputValueException e){
+                System.out.println(e.getMessage());
+            }
         }
+
     }
     private void FPassportIDsetter (Scanner sc, Person p){
-        try {
-            System.out.print("\nВведите поле Frontman.PassportID :\t");
-            String st = sc.nextLine();
-            p.setPassportID(st);
-        }catch (InvalidInputValueException e){
-            System.out.println(e.getMessage());
-            FPassportIDsetter(sc,p);
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try {
+                System.out.print("\nВведите поле Frontman.PassportID :\t");
+                String st = sc.nextLine();
+                p.setPassportID(st);
+                input_is_correct = true;
+            }catch (InvalidInputValueException e){
+                System.out.println(e.getMessage());
+            }
         }
+
     }
     private void FEyeColorsetter (Scanner sc, Person p){
-        try {
-            System.out.print("\nВведите поле Frontman.EyeColor :\t");
-            for (Color c: Color.values()){
-                System.out.print(c+"\t");
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try {
+                System.out.print("\nВведите поле Frontman.EyeColor :\t");
+                for (Color c: Color.values()){
+                    System.out.print(c+"\t");
+                }
+                String st = sc.nextLine();
+                p.setEyeColor(st);
+                input_is_correct = true;
+            }catch (InvalidInputValueException e){
+                System.out.println(e.getMessage());
             }
-            String st = sc.nextLine();
-            p.setEyeColor(st);
-        }catch (InvalidInputValueException e){
-            System.out.println(e.getMessage());
-            FEyeColorsetter(sc,p);
         }
+
     }
 
     private void FLocSetter (Scanner sc, Person p){
@@ -185,43 +217,52 @@ public class ReadsBand {
         p.setLocation(l);
     }
     private void FrLocXsetter (Scanner sc, Location l){
-        try{
-            System.out.print("\nВведите поле Frontman.Location.X :\t");
-            String st = sc.nextLine();
-            l.setX(st);
-        } catch (InvalidInputValueException e ){
-            System.out.println(e.getMessage());
-            FrLocXsetter(sc,l);
-        } catch (NumberFormatException e ){
-            System.out.println("Недопустимое значение Person.Location.X . Невозможно привести к типу Integer .");
-            FrLocXsetter(sc,l);
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try{
+                System.out.print("\nВведите поле Frontman.Location.X :\t");
+                String st = sc.nextLine();
+                l.setX(st);
+                input_is_correct = true;
+            } catch (InvalidInputValueException e ){
+                System.out.println(e.getMessage());
+            } catch (NumberFormatException e ){
+                System.out.println("Недопустимое значение Person.Location.X . Невозможно привести к типу Integer .");
+            }
         }
+
     }
     private void FrLocYsetter (Scanner sc, Location l){
-        try{
-            System.out.print("\nВведите поле Frontman.Location.Y :\t");
-            String st = sc.nextLine();
-            l.setY(st);
-        }catch (InvalidInputValueException e){
-            System.out.println(e.getMessage());
-            FrLocYsetter(sc,l);
-        } catch (NumberFormatException e ){
-            System.out.println("Недопустимое значение Person.Location.Y . Невозможно привести к типу int .");
-            FrLocYsetter(sc,l);
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try{
+                System.out.print("\nВведите поле Frontman.Location.Y :\t");
+                String st = sc.nextLine();
+                l.setY(st);
+                input_is_correct = true;
+            }catch (InvalidInputValueException e){
+                System.out.println(e.getMessage());
+            } catch (NumberFormatException e ){
+                System.out.println("Недопустимое значение Person.Location.Y . Невозможно привести к типу int .");
+            }
         }
+
     }
     private void FrLocZsetter (Scanner sc, Location l){
-        try{
-            System.out.print("\nВведите поле Frontman.Location.Z :\t");
-            String st = sc.nextLine();
-            l.setZ(st);
-        } catch (InvalidInputValueException e){
-            System.out.println(e.getMessage());
-            FrLocZsetter(sc,l);
-        } catch (NumberFormatException e ) {
-            System.out.println("Недопустимое значение Person.Location.Z . Невозможно привести к типу int .");
-            FrLocZsetter(sc,l);
+        boolean input_is_correct = false;
+        while (!input_is_correct){
+            try{
+                System.out.print("\nВведите поле Frontman.Location.Z :\t");
+                String st = sc.nextLine();
+                l.setZ(st);
+                input_is_correct = true;
+            } catch (InvalidInputValueException e){
+                System.out.println(e.getMessage());
+            } catch (NumberFormatException e ) {
+                System.out.println("Недопустимое значение Person.Location.Z . Невозможно привести к типу int .");
+            }
         }
+
     }
 
 

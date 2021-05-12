@@ -11,7 +11,7 @@ public class ExitCommand implements NonArgumentable {//завершить про
 
     @Override
     public void execute(Stack mystack, String[] argument) {
-        if (argument.length>1){
+        if (argument.length>0){
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
         System.exit(0);
