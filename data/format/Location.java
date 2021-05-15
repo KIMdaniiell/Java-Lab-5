@@ -12,12 +12,13 @@ public class Location {
 
     /**
      * Setter for Y paremeter
+     *
      * @param value - string representation of Y paremeter
      * @throws InvalidInputValueException if value does not feat the conditions written in the Task
      */
     public void setY(String value) throws InvalidInputValueException {
         if (!value.equals("")) {
-            y=Integer.parseInt(value);
+            y = Integer.parseInt(value);
         } else {
             throw new InvalidInputValueException("Недопустимое значение Person.Location.Y");
             //примитивный тип int не может принимать значение null
@@ -26,12 +27,13 @@ public class Location {
 
     /**
      * Setter for X paremeter
+     *
      * @param value - string representation of X paremeter
      * @throws InvalidInputValueException if value does not feat the conditions written in the Task
      */
     public void setX(String value) throws InvalidInputValueException {
         if (!value.equals("")) {
-            x=Integer.valueOf(value);
+            x = Integer.valueOf(value);
         } else {
             throw new InvalidInputValueException("Недопустимое значение Person.Location.X");
         }
@@ -39,12 +41,13 @@ public class Location {
 
     /**
      * Setter for Y paremeter
+     *
      * @param value - string representation of Y paremeter
      * @throws InvalidInputValueException if value does not feat the conditions written in the Task
      */
-    public void setZ(String value) throws InvalidInputValueException  {
+    public void setZ(String value) throws InvalidInputValueException {
         if (!value.equals("")) {
-            z=Integer.parseInt(value);
+            z = Integer.parseInt(value);
         } else {
             throw new InvalidInputValueException("Недопустимое значение Person.Location.Z");
             //примитивный тип int не может принимать значение null
@@ -65,13 +68,10 @@ public class Location {
 
     /**
      * Method used to check if all of nessessary fileds are given a value
+     *
      * @return true if all of fields are given a value and false if not
      */
-    public boolean Complete(){
-        if (this.x==null){
-            return false;
-        } else{
-            return true;
-        }
+    public boolean Complete() {
+        return this.x != null;
     }
 }

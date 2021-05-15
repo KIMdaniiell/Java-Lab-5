@@ -25,15 +25,15 @@ public class Person {
     }
 
     public void setName(String value) throws InvalidInputValueException {
-        if (!value.equals("")){
+        if (!value.equals("")) {
             name = value;
-        } else{
+        } else {
             throw new InvalidInputValueException("Недопустимое значение Person.NAME");
         }
     }
 
-    public void setPassportID(String value) throws InvalidInputValueException  {
-        if ((value.length()>=5)||(value.equals(""))) {
+    public void setPassportID(String value) throws InvalidInputValueException {
+        if ((value.length() >= 5) || (value.equals(""))) {
             this.passportID = value;
         } else {
             throw new InvalidInputValueException("Недопустимое значение Person.PassportID");
@@ -59,15 +59,12 @@ public class Person {
 
     /**
      * Method used to check if all of nessessary fileds are given a value
+     *
      * @return true if all of fields are given a value and false if not
      */
     public boolean Complete() {
         if ((this.name == null) || (this.eyeColor == null)) {
             return false;
-        } else if ((this.location!=null)&&(!this.location.Complete())){
-            return false;
-        } else{
-            return true;
-        }
+        } else return (this.location == null) || (this.location.Complete());
     }
 }

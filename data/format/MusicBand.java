@@ -42,25 +42,16 @@ public class MusicBand implements Comparable<MusicBand> {
         return establishmentDate;
     }
 
-    public void setEstablishmentDate(String s) {
-        if (s.equals("")) {
-            this.establishmentDate = null;
-        } else {
-            this.establishmentDate = new java.util.Date(Long.parseLong(s));
-        }
+    public void setEstablishmentDate(java.util.Date date) {
+        this.establishmentDate = date;
     }
 
     public int getNumberOfParticipants() {
         return numberOfParticipants;
     }
 
-    public void setNumberOfParticipants(String num) throws InvalidInputValueException {
-        int value = Integer.parseInt(num);
-        if (value > 0) {
-            this.numberOfParticipants = value;
-        } else {
-            throw new InvalidInputValueException("Недопустимое значение NumberOfParticipants.");
-        }
+    public void setNumberOfParticipants(Integer num) {
+        this.numberOfParticipants = num;
     }
 
     public Integer getId() {
@@ -85,25 +76,16 @@ public class MusicBand implements Comparable<MusicBand> {
         return description;
     }
 
-    public void setDescription(String description) throws InvalidInputValueException {
-        if (!description.equals("")) {
-            this.description = description;
-        } else {
-            throw new InvalidInputValueException("Недопустимое значение Description.");
-        }
-
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public MusicGenre getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) throws InvalidInputValueException {
-        if (MusicGenre.contains(genre)) {
-            this.genre = MusicGenre.valueOf(genre);
-        } else {
-            throw new InvalidInputValueException("Недопустимое значение Genre.");
-        }
+    public void setGenre(MusicGenre genre) {
+        this.genre = genre;
     }
 
     public Person getFrontMan() {

@@ -11,32 +11,37 @@ public class Coordinates {
 
     /**
      * Setter for X paremeter
+     *
      * @param value - string representation of X paremeter
      */
-    public void setX(String value){
+    public void setX(String value) {
         this.x = Long.parseLong(value);
     }
+
     /**
      * Setter for Y paremeter
+     *
      * @param value - string representation of Y paremeter
      */
     public void setY(String value) throws InvalidInputValueException {
-        if (!value.equals("")){
-            if ((Double.parseDouble(value) <= 407)&&(Double.parseDouble(value) <= 407)){
+        if (!value.equals("")) {
+            if ((Double.parseDouble(value) <= 407) && (Double.parseDouble(value) <= 407)) {
                 this.y = Double.parseDouble(value);
-            }else {
+            } else {
                 throw new InvalidInputValueException("Недопустимое значение Coordinates.Y");
             }
         } else {
             throw new InvalidInputValueException("Недопустимое значение Coordinates.Y");
         }
     }
+
     /**
      * Getter for X paremeter
      */
     public long getX() {
         return x;
     }
+
     /**
      * Getter for Y paremeter
      */

@@ -12,12 +12,13 @@ public enum Color {
 
     /**
      * Static method. Returns true if Color contains argument
+     *
      * @param ingenre - argument, which is expected to be Color constant
      * @return true if contais and false if not
      */
-    public static boolean contains(String ingenre){
-        for (Color color: Color.values()){
-            if (ingenre.equals(color.name())){
+    public static boolean contains(String ingenre) {
+        for (Color color : Color.values()) {
+            if (ingenre.equals(color.name())) {
                 return true;
             }
         }
