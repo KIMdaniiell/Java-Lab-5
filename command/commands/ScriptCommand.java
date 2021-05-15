@@ -14,8 +14,8 @@ import java.util.Stack;
  */
 public class ScriptCommand {
 
-    public void execute (Stack<MusicBand> mycollection, String[] arguments, String outdatapath) throws InvalidCommandArgumentExeption {
-        if (arguments.length!=1){
+    public void execute(Stack<MusicBand> mycollection, String[] arguments, String outdatapath) throws InvalidCommandArgumentExeption {
+        if (arguments.length != 1) {
             throw new InvalidCommandArgumentExeption("Некорректный ввод параметра SCRIPT PATH.");
         } else {
             String script_path = arguments[0];
@@ -23,15 +23,13 @@ public class ScriptCommand {
             try {
                 Scanner sc = new Scanner(script_file);
                 if (sc.hasNext()) {
-                    String offer;
-                    Commander commander = new Commander();
                     do {
-                        commander.doCommand(mycollection, outdatapath, sc);
+                        Commander.doCommand(mycollection, outdatapath, sc);
                     } while (sc.hasNext());
                 } else {
                     System.out.println("Скрип не содержит команд.");
                 }
-            } catch (FileNotFoundException e){
+            } catch (FileNotFoundException e) {
                 System.out.println("Ошибка. Файл не обнаружен");
             }
         }

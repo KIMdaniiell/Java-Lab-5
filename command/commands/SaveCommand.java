@@ -8,20 +8,19 @@ import java.util.Stack;
 
 /**
  * This command saves main collection Stack<MusicBand> into XML-document
- *
  */
 public class SaveCommand implements NonArgumentable { //сохранить коллекцию в файл
-    private String outdata_path;
+    private final String outdata_path;
 
-    public SaveCommand(String outdata_path){
+    public SaveCommand(String outdata_path) {
         this.outdata_path = outdata_path;
     }
 
     @Override
     public void execute(Stack<MusicBand> mystack, String[] argument) {
-        if (argument.length>0){
+        if (argument.length > 0) {
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
-        Parser.deserialize(outdata_path,mystack);
+        Parser.deserialize(outdata_path, mystack);
     }
 }

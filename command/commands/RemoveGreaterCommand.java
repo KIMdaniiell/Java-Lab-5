@@ -14,18 +14,18 @@ import java.util.Stack;
 public class RemoveGreaterCommand extends ReadsBand implements CanEdit {
 
     @Override
-    public Stack<MusicBand> execute(Stack<MusicBand> mystack, String[] argument){
-        if (argument.length>0){
+    public Stack<MusicBand> execute(Stack<MusicBand> mystack, String[] argument) {
+        if (argument.length > 0) {
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
         Stack<MusicBand> stackofgreater = new Stack<>();
         MusicBand someband = addition(mystack);
-        for (MusicBand band: mystack){
-            if (band.compareTo(someband)>0){
+        for (MusicBand band : mystack) {
+            if (band.compareTo(someband) > 0) {
                 stackofgreater.push(band);
             }
         }
-        for (MusicBand greaterband: stackofgreater){
+        for (MusicBand greaterband : stackofgreater) {
             mystack.remove(greaterband);
         }
         return mystack;

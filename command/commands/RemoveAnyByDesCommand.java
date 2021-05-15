@@ -13,17 +13,17 @@ import java.util.Stack;
 public class RemoveAnyByDesCommand {
 
     public Stack<MusicBand> execute(Stack<MusicBand> mystack, String[] arguments) throws InvalidCommandArgumentExeption {
-        if (arguments.length!=1){
+        if (arguments.length != 1) {
             throw new InvalidCommandArgumentExeption("Некорректный ввод параметра DESCRIPTION.");
         } else {
             String description = arguments[0];
             Stack<MusicBand> newstack = new Stack<>();
-            for (MusicBand band : mystack){
-                if (band.getDescription().equals(description)){
+            for (MusicBand band : mystack) {
+                if (band.getDescription().equals(description)) {
                     newstack.push(band);
                 }
             }
-            for (MusicBand band: newstack){
+            for (MusicBand band : newstack) {
                 mystack.remove(band);
             }
             return mystack;

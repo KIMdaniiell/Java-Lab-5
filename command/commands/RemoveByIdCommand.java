@@ -11,18 +11,18 @@ import java.util.Stack;
 public class RemoveByIdCommand {
 
     public Stack<MusicBand> execute(Stack<MusicBand> mystack, String[] arguments) throws InvalidCommandArgumentExeption {
-        if (arguments.length!=1){
+        if (arguments.length != 1) {
             throw new InvalidCommandArgumentExeption("Некорректный ввод параметра ID.");
         } else {
             Integer id = Integer.valueOf(arguments[0]);
             Stack<MusicBand> newstack = new Stack<>();
-            for (MusicBand band : mystack){
+            for (MusicBand band : mystack) {
                 Integer bandid = Integer.valueOf(band.getId().toString());
-                if (bandid.equals(id)){
+                if (bandid.equals(id)) {
                     newstack.push(band);
                 }
             }
-            for (MusicBand band: newstack){
+            for (MusicBand band : newstack) {
                 mystack.remove(band);
             }
             return mystack;

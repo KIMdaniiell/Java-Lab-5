@@ -14,8 +14,8 @@ import java.util.Stack;
  */
 public class UpdateCommand extends ReadsBand {
 
-    public Stack<MusicBand> execute (Stack<MusicBand> mystack,String[] arguments) throws InvalidCommandArgumentExeption {
-        if (arguments.length!=1){
+    public Stack<MusicBand> execute(Stack<MusicBand> mystack, String[] arguments) throws InvalidCommandArgumentExeption {
+        if (arguments.length != 1) {
             throw new InvalidCommandArgumentExeption("Некорректный ввод параметра ID.");
         } else {
             Integer curentid = Integer.valueOf(arguments[0]);
@@ -24,16 +24,16 @@ public class UpdateCommand extends ReadsBand {
             Integer id = curentid;
             newband.saveID(id);
             boolean listhasid = false;
-            for (MusicBand band: mystack){
-                if (band.getId().equals(id)){
+            for (MusicBand band : mystack) {
+                if (band.getId().equals(id)) {
                     oldband = band;
                     listhasid = true;
                 }
             }
-            if (!listhasid){
+            if (!listhasid) {
                 System.out.println("Элемент с таким значением не существует.");
             } else {
-                Collections.replaceAll(mystack,oldband,newband);
+                Collections.replaceAll(mystack, oldband, newband);
             }
 
             return mystack;

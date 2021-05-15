@@ -11,7 +11,7 @@ public class HelpCommand implements NonArgumentable { //вывести спра�
 
     @Override
     public void execute(Stack mystack, String[] argument) {
-        if (argument.length>0){
+        if (argument.length > 0) {
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
         System.out.println("help : вывести справку по доступным командам\n" +

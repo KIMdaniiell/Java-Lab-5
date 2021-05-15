@@ -14,29 +14,29 @@ public class FilterCommand implements NonArgumentable {
 
     @Override
     public void execute(Stack<MusicBand> mystack, String[] argument) {
-        if (argument.length>0){
+        if (argument.length > 0) {
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
         System.out.println("Введите одну из констант MusicGenre:");
-        for (MusicGenre genre: MusicGenre.values()){
-            System.out.print(genre+"\t");
+        for (MusicGenre genre : MusicGenre.values()) {
+            System.out.print(genre + "\t");
         }
         System.out.println();
 
         Scanner sc = new Scanner(System.in);
         String offer = sc.nextLine();
 
-        while (!MusicGenre.contains(offer)){
+        while (!MusicGenre.contains(offer)) {
             System.out.println("Введена строка, не является именем константы MusicGenre");
             System.out.println("Введите одну из констант MusicGenre:");
-            for (MusicGenre genre: MusicGenre.values()){
-                System.out.print(genre+"\t");
+            for (MusicGenre genre : MusicGenre.values()) {
+                System.out.print(genre + "\t");
             }
             System.out.println();
             offer = sc.nextLine();
         }
-        for (MusicBand band: mystack){
-            if (band.getGenre().compareTo(MusicGenre.valueOf(offer))<0) {
+        for (MusicBand band : mystack) {
+            if (band.getGenre().compareTo(MusicGenre.valueOf(offer)) < 0) {
                 System.out.println(band.toString());
             }
         }
