@@ -39,12 +39,6 @@ public class MusicBand implements Comparable<MusicBand> {
     }
 
     public java.util.Date getEstablishmentDate() {
-        //if (this.establishmentDate == null){
-        //    return (null);
-        //}else {
-        //    //return establishmentDate.getTime() + "";
-        //    return establishmentDate;
-        //}
         return establishmentDate;
     }
 
