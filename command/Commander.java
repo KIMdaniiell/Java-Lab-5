@@ -79,7 +79,7 @@ public class Commander {
                     break;
                 case "execute_script":
                     rec_counter++;
-                    if (rec_counter>=3){
+                    if (rec_counter >= 3) {
                         System.out.println("Рекурсия");
                         rec_counter--;
                     } else {
