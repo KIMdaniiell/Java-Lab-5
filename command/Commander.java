@@ -11,16 +11,17 @@ import java.util.Scanner;
 import java.util.Stack;
 
 /**
- *  This class reads and executes commands
+ * This class reads and executes commands
  */
 public class Commander {
     /*
-    *This class has a static method doCommand which reads commands
-    *and executes them via necessary *Command class. The use of this method
-    * is in the Main class and ScriptCommand class.
+     *This class has a static method doCommand which reads commands
+     *and executes them via necessary *Command class. The use of this method
+     * is in the Main class and ScriptCommand class.
      */
+    static int rec_counter = 0;
 
-    public static void doCommand(Stack<MusicBand> mystack, String data_path, Scanner sc){
+    public static void doCommand(Stack<MusicBand> mystack, String data_path, Scanner sc) {
 
         String offer = sc.nextLine();
         try {
@@ -77,19 +78,21 @@ public class Commander {
                     mystack = new RemoveByIdCommand().execute(mystack, arguments);
                     break;
                 case "execute_script":
-                    new ScriptCommand().execute(mystack, arguments, data_path);
+                    rec_counter++;
+                    if (rec_counter>=3){
+                        System.out.println("Рекурсия");
+                        rec_counter--;
+                    } else {
+                        new ScriptCommand().execute(mystack, arguments, data_path);
+                    }
                     break;
                 default:
                     System.out.println("Неизвестная команда\nПовторите ввод.");
             }
-        } catch (InvalidCommandArgumentExeption e){
+        } catch (InvalidCommandArgumentExeption e) {
             System.out.println(e.getMessage());
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println("Неверный формат ввода аргумента.\nПовторите ввод.");
-        } catch (StackOverflowError e) {
-            System.out.println("Произошло переполнение стека.");
-        } catch (OutOfMemoryError e) {
-            System.out.println("Закончилась память.");
         }
     }
 
