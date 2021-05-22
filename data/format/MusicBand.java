@@ -72,6 +72,15 @@ public class MusicBand implements Comparable<MusicBand> {
         this.id = idvalue;
     }
 
+    public void setId(Integer id,Stack<MusicBand> mystack) throws InvalidInputValueException {
+        for (MusicBand band : mystack){
+            if (band.getId().equals(id)){
+                throw new InvalidInputValueException("Ошибка параметра id. \nЭлементов с таким значением больше одного.");
+            }
+        }
+        this.id = id;
+    }
+
     public String getDescription() {
         return description;
     }

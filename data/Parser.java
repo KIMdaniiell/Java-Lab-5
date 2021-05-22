@@ -2,6 +2,7 @@ package data;
 
 import java.io.FileNotFoundException;
 import java.time.Month;
+import java.util.Date;
 import java.util.Stack;
 
 import data.format.*;
@@ -137,7 +138,15 @@ public class Parser {
 
                                     switch (nodename) {
                                         case "id":
-                                            band.setId(mystack);
+                                            try {
+                                                Integer idvalue = Integer.valueOf(nodevalue);
+                                                if (idvalue <=0){
+                                                    throw new InvalidInputValueException("Недопустимое значение Id.");
+                                                }
+                                                band.setId(idvalue, mystack);
+                                            } catch (NumberFormatException e) {
+                                                throw new InvalidInputValueException("Недопустимое значение Id.");
+                                            }
                                             break;
                                         case "name":
                                             band.setName(nodevalue);
@@ -171,7 +180,25 @@ public class Parser {
                                             if (nodevalue.equals("")) {
                                                 band.setEstablishmentDate(null);
                                             } else {
-                                                band.setEstablishmentDate(new java.util.Date(Long.parseLong(nodevalue)));
+                                                try {
+                                                    if (nodevalue.split(" ").length == 2){
+                                                        int year = Integer.parseInt(nodevalue.split(" ")[0]);
+                                                        int month = Integer.parseInt(nodevalue.split(" ")[1]);
+                                                        if ((month>12)|(month<1)){
+                                                            throw new InvalidInputValueException("Недопустимое формат ввода Establishment date.");
+                                                        }
+                                                        java.util.Date date = new Date(0);
+                                                        date.setYear(year);
+                                                        date.setMonth(month);
+                                                        band.setEstablishmentDate(date);
+                                                    } else {
+                                                        throw new InvalidInputValueException("Недопустимое формат ввода Establishment date.");
+                                                    }
+
+
+                                                } catch (NumberFormatException e){
+                                                    throw new InvalidInputValueException("Недопустимое значение Establishment date.");
+                                                }
                                             }
                                             break;
                                         default:
@@ -201,7 +228,7 @@ public class Parser {
             System.out.println("ParserConfigurationException/IOException");
             System.out.println(e.getMessage());
         } catch (SAXException e) {
-            System.out.println("Ошибка тегов.");
+            System.out.println("Недопустимый формат XML документа");
         } catch (InvalidInputValueException | InvalidXMLInputStructureException e) {
             System.out.println(e.getMessage());
             System.exit(1);
@@ -218,6 +245,7 @@ public class Parser {
     public static void deserialize(String indata_path, Stack<MusicBand> somestack) {
         data_path = indata_path;
         mystack = somestack;
+
         String xmlstructure = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
         try {
             File file = new File(data_path);
@@ -247,7 +275,14 @@ public class Parser {
                 if (band.getEstablishmentDate() == null) {
                     pw.printf("\t\t<establishmentDate value=\"%s\"/>\n", "");
                 } else {
-                    pw.printf("\t\t<establishmentDate value=\"%s\"/>\n", band.getEstablishmentDate().getTime() + "");
+                    int year = band.getEstablishmentDate().getYear();
+                    int month = band.getEstablishmentDate().getMonth();
+                    if (month !=0){
+                        pw.printf("\t\t<establishmentDate value=\"%s\"/>\n", year +" "+month +  "");
+                    } else {
+                        pw.printf("\t\t<establishmentDate value=\"%s\"/>\n", year +" "+12 +  "");
+                    }
+
                 }
 
                 pw.printf("\t\t<genre value=\"%s\"/>\n", band.getGenre().name());
