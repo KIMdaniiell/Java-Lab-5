@@ -22,7 +22,7 @@ public class InfoCommand implements NonArgumentable {
         System.out.println("Количество элементов : " + mystack.size());
         System.out.println("Дата инициализации : " + LocalDate.now());
         for (MusicBand band : mystack) {
-            System.out.println(band.toString());
+            System.out.println("\t-"+band.toString());
         }
     }
 }
