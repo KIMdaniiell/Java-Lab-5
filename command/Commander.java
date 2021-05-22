@@ -4,7 +4,6 @@ import command.commands.*;
 import data.format.MusicBand;
 import exceptions.InvalidCommandArgumentExeption;
 
-import javax.xml.catalog.Catalog;
 import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.Scanner;
@@ -13,7 +12,7 @@ import java.util.Stack;
 /**
  * This class reads and executes commands
  */
-public class Commander {
+public class    Commander {
     /*
      *This class has a static method doCommand which reads commands
      *and executes them via necessary *Command class. The use of this method
@@ -79,12 +78,13 @@ public class Commander {
                     break;
                 case "execute_script":
                     rec_counter++;
-                    if (rec_counter >= 3) {
-                        System.out.println("Рекурсия");
-                        rec_counter--;
+                    if (rec_counter >= 5) {
+                        System.out.println("Глубина рекурсии достигла предела (5). Остановка.");
                     } else {
                         new ScriptCommand().execute(mystack, arguments, data_path);
                     }
+                    System.out.println(rec_counter);
+                    rec_counter--;
                     break;
                 default:
                     System.out.println("Неизвестная команда\nПовторите ввод.");

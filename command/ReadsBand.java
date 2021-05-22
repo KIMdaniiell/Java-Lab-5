@@ -4,6 +4,7 @@ import data.format.*;
 import exceptions.InvalidInputValueException;
 
 import java.time.Month;
+import java.util.Date;
 import java.util.Scanner;
 import java.time.DateTimeException;
 import java.util.Stack;
@@ -31,7 +32,7 @@ public class ReadsBand {
         EstablishmentDatesetter(sc, band);
         Genresetter(sc, band);
         Personsetter(sc, band);
-
+        CreatDatesetter(band);
         return band;
     }
 
@@ -136,16 +137,26 @@ public class ReadsBand {
         boolean input_is_correct = false;
         while (!input_is_correct) {
             try {
-                System.out.print("\nВведите поле establishmentDate :\t");
+                System.out.print("\nВведите поле establishmentDate (год + месяц) :\t");
                 String st = sc.nextLine();
                 if (st.equals("")) {
                     band.setEstablishmentDate(null);
                 } else {
-                    band.setEstablishmentDate(new java.util.Date(Long.parseLong(st)));
+                    int year = Integer.parseInt(st.split(" ")[0]);
+                    int month = Integer.parseInt(st.split(" ")[1]);
+                    if ((month>12)|(month<1)){
+                        throw new InvalidInputValueException("Недопустимое формат ввода месяца.");
+                    }
+                    java.util.Date date = new Date(0);
+                    date.setYear(year);
+                    date.setMonth(month);
+                    band.setEstablishmentDate(date);
                 }
                 input_is_correct = true;
             } catch (NumberFormatException e) {
-                System.out.println("Недопустимое значение EstablishmentDate. Невозможно привести к типу java.util.Date .");
+                System.out.println("Недопустимое значение EstablishmentDate (год + месяц).");
+            } catch (InvalidInputValueException e){
+                System.out.println(e.getMessage());
             }
         }
 
@@ -296,5 +307,7 @@ public class ReadsBand {
 
     }
 
-
+    private void CreatDatesetter(MusicBand band){
+        band.setCreationDate();
+    }
 }

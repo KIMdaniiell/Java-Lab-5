@@ -5,6 +5,7 @@ import data.format.MusicBand;
 import exceptions.InvalidCommandArgumentExeption;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Stack;
 
 /**
@@ -18,14 +19,25 @@ public class RemoveAnyByDesCommand {
         } else {
             String description = arguments[0];
             Stack<MusicBand> newstack = new Stack<>();
-            for (MusicBand band : mystack) {
+            Iterator<MusicBand> iterator = mystack.iterator();
+            boolean not_deleted = true;
+
+            while (iterator.hasNext()){
+                MusicBand band = iterator.next();
+                if (not_deleted&&band.getDescription().equals(description)){
+                    iterator.remove();
+                    not_deleted = false;
+                }
+            }
+
+            /**for (MusicBand band : mystack) {
                 if (band.getDescription().equals(description)) {
                     newstack.push(band);
                 }
             }
             for (MusicBand band : newstack) {
                 mystack.remove(band);
-            }
+            }**/
             return mystack;
         }
 
