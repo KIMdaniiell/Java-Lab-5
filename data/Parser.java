@@ -186,6 +186,8 @@ public class Parser {
                                                         int month = Integer.parseInt(nodevalue.split(" ")[1]);
                                                         if ((month>12)|(month<1)){
                                                             throw new InvalidInputValueException("Недопустимое формат ввода Establishment date.");
+                                                        } else if (month==12){
+                                                            year -=1;
                                                         }
                                                         java.util.Date date = new Date(0);
                                                         date.setYear(year);

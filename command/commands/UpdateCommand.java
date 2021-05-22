@@ -19,23 +19,26 @@ public class UpdateCommand extends ReadsBand {
             throw new InvalidCommandArgumentExeption("Некорректный ввод параметра ID.");
         } else {
             Integer curentid = Integer.valueOf(arguments[0]);
+            boolean has_this_id = false;
+            for (MusicBand band: mystack){
+                if (band.getId().equals(curentid)){
+                    has_this_id = true;
+                }
+            }
+            if (has_this_id==false){
+                throw new InvalidCommandArgumentExeption("Некорректный ввод параметра ID. Элемента с таким ID не существует.");
+            }
             MusicBand oldband = new MusicBand();
             MusicBand newband = addition(mystack);
             Integer id = curentid;
             newband.saveID(id);
-            boolean listhasid = false;
             for (MusicBand band : mystack) {
                 if (band.getId().equals(id)) {
                     oldband = band;
-                    listhasid = true;
                 }
             }
-            if (!listhasid) {
-                System.out.println("Элемент с таким значением не существует.");
-            } else {
-                Collections.replaceAll(mystack, oldband, newband);
-            }
-
+            Collections.replaceAll(mystack, oldband, newband);
+            System.out.println("Элемент с данным ID был обновлен.");
             return mystack;
         }
 

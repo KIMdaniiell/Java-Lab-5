@@ -16,6 +16,7 @@ public class ClearCommand implements CanEdit {  //очистить коллек�
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
         mystack.clear();
+        System.out.println("Коллекция очищена.");
         return mystack;
     }
 }

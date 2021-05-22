@@ -22,5 +22,6 @@ public class SaveCommand implements NonArgumentable { //сохранить ко�
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
         Parser.deserialize(outdata_path, mystack);
+        System.out.println("Сохранение ...");
     }
 }

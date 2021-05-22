@@ -22,9 +22,12 @@ public class RemoveByIdCommand {
                     newstack.push(band);
                 }
             }
+
             for (MusicBand band : newstack) {
                 mystack.remove(band);
+                System.out.println("Удален элемент - "+band.toString());
             }
+
             return mystack;
         }
 

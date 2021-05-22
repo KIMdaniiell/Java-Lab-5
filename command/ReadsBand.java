@@ -139,6 +139,9 @@ public class ReadsBand {
             try {
                 System.out.print("\nВведите поле establishmentDate (год + месяц) :\t");
                 String st = sc.nextLine();
+                if (st.split(" ").length!=2){
+                    throw new InvalidInputValueException("Недопустимое формат ввода даты.");
+                }
                 if (st.equals("")) {
                     band.setEstablishmentDate(null);
                 } else {
@@ -146,6 +149,8 @@ public class ReadsBand {
                     int month = Integer.parseInt(st.split(" ")[1]);
                     if ((month>12)|(month<1)){
                         throw new InvalidInputValueException("Недопустимое формат ввода месяца.");
+                    } else if (month==12){
+                        year -=1;
                     }
                     java.util.Date date = new Date(0);
                     date.setYear(year);

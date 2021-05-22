@@ -25,8 +25,12 @@ public class RemoveGreaterCommand extends ReadsBand implements CanEdit {
                 stackofgreater.push(band);
             }
         }
-        for (MusicBand greaterband : stackofgreater) {
-            mystack.remove(greaterband);
+        if (!stackofgreater.isEmpty()) {
+            System.out.println("Удалены следующие элементы: ");
+            for (MusicBand greaterband : stackofgreater) {
+                System.out.println("\t" + greaterband.toString());
+                mystack.remove(greaterband);
+            }
         }
         return mystack;
     }

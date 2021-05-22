@@ -18,6 +18,7 @@ public class SortCommand implements CanEdit {
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
         Collections.sort(mystack);
+        System.out.println("Коллекция отсортирована.");
         return mystack;
     }
 }

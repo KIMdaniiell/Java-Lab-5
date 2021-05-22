@@ -15,6 +15,7 @@ public class ExitCommand implements NonArgumentable {//завершить про
         if (argument.length > 0) {
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
+        System.out.println("Завершение работы программы ...");
         System.exit(0);
     }
 }

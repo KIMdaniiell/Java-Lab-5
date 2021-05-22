@@ -83,7 +83,6 @@ public class    Commander {
                     } else {
                         new ScriptCommand().execute(mystack, arguments, data_path);
                     }
-                    System.out.println(rec_counter);
                     rec_counter--;
                     break;
                 default:

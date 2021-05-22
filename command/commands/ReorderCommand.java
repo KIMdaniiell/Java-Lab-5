@@ -17,6 +17,7 @@ public class ReorderCommand implements CanEdit {
             System.out.println("Некорректный ввод. Лишний аргумент.");
         }
         Collections.reverse(mystack);
+        System.out.println("Коллекция отсортирована в обратном порядке.");
         return mystack;
     }
 }

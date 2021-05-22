@@ -27,17 +27,12 @@ public class RemoveAnyByDesCommand {
                 if (not_deleted&&band.getDescription().equals(description)){
                     iterator.remove();
                     not_deleted = false;
+                    System.out.println("Элемент с данным описанием был удален.");
                 }
             }
-
-            /**for (MusicBand band : mystack) {
-                if (band.getDescription().equals(description)) {
-                    newstack.push(band);
-                }
+            if (not_deleted){
+                System.out.println("Элемента с таким описанием не существует.");
             }
-            for (MusicBand band : newstack) {
-                mystack.remove(band);
-            }**/
             return mystack;
         }
 
